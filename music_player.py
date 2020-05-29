@@ -1,10 +1,12 @@
 import os,random
-
+from tkinter.filedialog import askdirectory
+import tkinter
 listOfSongs = []
 randSong = 0
+directory = ""
 def playMusic():
     global randSong
-    directory = "E:\python"
+    global directory
     for song in os.listdir(directory):
         if song.endswith(".mp3"):
             listOfSongs.append(song)
@@ -33,6 +35,14 @@ def playPreviousMusic():
         randSong = (len(listOfSongs) - 1)
 
     os.system(listOfSongs[randSong])
+
+def setDirectory():
+    global directory
+    window = tkinter.Tk()
+    window.withdraw()
+    directory = askdirectory()
+
+
 ###################
 '''
 while 1:
@@ -43,4 +53,6 @@ while 1:
         playNextMusic()
     elif 3==a:
         playPreviousMusic()
+    elif 4==a:
+        setDirectory()
 '''
