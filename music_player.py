@@ -4,7 +4,7 @@ import tkinter
 listOfSongs = []
 randSong = 0
 directory = ""
-def playMusic():
+def playMusic(): #find all .mp3 files in directory and play random mp3
     global randSong
     global directory
     for song in os.listdir(directory):
@@ -16,7 +16,7 @@ def playMusic():
 
 
 
-def playNextMusic():
+def playNextMusic(): #increase the global randSong and play listOfSongs[randSong]
     global randSong
     global listOfSongs
     randSong += 1
@@ -26,7 +26,7 @@ def playNextMusic():
 
     os.system(listOfSongs[randSong])
 
-def playPreviousMusic():
+def playPreviousMusic(): #decrease the global randSong and play listOfSongs[randSong]
     global randSong
     global listOfSongs
     randSong -= 1
@@ -36,7 +36,7 @@ def playPreviousMusic():
 
     os.system(listOfSongs[randSong])
 
-def setDirectory():
+def setDirectory(): #set directory of folder containing .mp3 files.
     global directory
     window = tkinter.Tk()
     window.withdraw()
