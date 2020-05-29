@@ -46,7 +46,7 @@ def setDirectory(): #set directory of folder containing .mp3 files.
 ###################
 '''
 while 1:
-    a=int(input("choose\n1-random\n2-next\n3-previous"))
+    a=int(input("choose\n1-random\n2-next\n3-previous\n4-set directory"))
     if 1==a:
         playMusic()
     elif 2==a:
