@@ -1,6 +1,7 @@
 import os,random
 from tkinter.filedialog import askdirectory
 import tkinter
+from pygame import mixer
 listOfSongs = []
 randSong = 0
 directory = ""
@@ -12,7 +13,9 @@ def playMusic(): #find all .mp3 files in directory and play random mp3
             listOfSongs.append(song)
             print(song)
     randSong = random.randint(0, len(listOfSongs)-1)
-    os.system(listOfSongs[randSong])
+    mixer.init()
+    mixer.music.load(listOfSongs[randSong])
+    mixer.music.play()
 
 
 
@@ -24,7 +27,9 @@ def playNextMusic(): #increase the global randSong and play listOfSongs[randSong
     if randSong >= (len(listOfSongs) - 1):
         randSong = 0
 
-    os.system(listOfSongs[randSong])
+    mixer.init()
+    mixer.music.load(listOfSongs[randSong])
+    mixer.music.play()
 
 def playPreviousMusic(): #decrease the global randSong and play listOfSongs[randSong]
     global randSong
@@ -34,7 +39,9 @@ def playPreviousMusic(): #decrease the global randSong and play listOfSongs[rand
     if randSong < 0:
         randSong = (len(listOfSongs) - 1)
 
-    os.system(listOfSongs[randSong])
+    mixer.init()
+    mixer.music.load(listOfSongs[randSong])
+    mixer.music.play()
 
 def setDirectory(): #set directory of folder containing .mp3 files.
     global directory
@@ -42,7 +49,9 @@ def setDirectory(): #set directory of folder containing .mp3 files.
     window.withdraw()
     directory = askdirectory()
 
-
+def stopMusic():
+    mixer.music.stop()
+    
 ###################
 '''
 while 1:
@@ -55,4 +64,6 @@ while 1:
         playPreviousMusic()
     elif 4==a:
         setDirectory()
+    elif 5==a:
+        stopMusic():
 '''
