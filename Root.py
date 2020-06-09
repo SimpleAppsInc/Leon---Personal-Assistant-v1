@@ -83,8 +83,25 @@ def notepad(text):
         f.write(text)
 
     subprocess.Popen(["notepad.exe", file_name])
+    
+    
+def searchInFolders(name): # name -> "chrome.exe"  and  return C:\Program Files\Google\chrome.exe
+    try:
+        for dirpath, dirnames, files in os.walk("C:\\"):
+            if name in files:
+                return (dirpath + "\\" + name)
+    except:
+        print("Program not found in C:\\Program Files")
+
+    try:
+        for dirpath, dirnames, files in os.walk("D:\\"):
+            if name in files:
+                return (dirpath + "\\" + name)
+    except:
+        print("Program not found in D:\\Program Files")
 
 
+        
 def playMusic():
     global randSong
     global directory
@@ -253,4 +270,5 @@ while True:
                     webbrowser.open(search_url)
                 except:
                     speak("Can't recognize")
-
+    if "open word" in letm:##########
+        searchInFolders("WINWORD.EXE")
